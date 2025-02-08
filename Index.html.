@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .container { padding: 20px; background: white; margin: 50px auto; width: 80%; border-radius: 10px; }
+        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to My Mini App!</h2>
+        <p id="user-info">Loading...</p>
+        <button onclick="showAlert()">Click Me</button>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Enable full screen
+        
+        let user = tg.initDataUnsafe?.user || { first_name: "Guest" };
+        document.getElementById("user-info").innerText = `Hello, ${user.first_name}!`;
+
+        function showAlert() {
+            tg.showAlert("Hello, this is a Telegram Mini App!");
+        }
+    </script>
+</body>
