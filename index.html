@@ -17,14 +17,12 @@
         <p id="user-info">Loading...</p>
         <button onclick="showAlert()">Click Me</button>
     </div>
-
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand(); // Enable full screen
         
         let user = tg.initDataUnsafe?.user || { first_name: "Guest" };
         document.getElementById("user-info").innerText = `Hello, ${user.first_name}!`;
-
         function showAlert() {
             tg.showAlert("Hello, this is a Telegram Mini App!");
         }
